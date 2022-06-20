@@ -2,16 +2,16 @@ plugins {
     id 'application'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.6'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.5.6'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.5.6'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.5.6'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.5.6'
 }
 
 application {
@@ -23,6 +23,11 @@ buildScan {
     termsOfServiceAgree = 'yes'
 }
 
-test {
-    useJUnitPlatform()
+
+testing {
+    suites {
+        test {
+            useJUnitJupiter()
+        }
+    }
 }
